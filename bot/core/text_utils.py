@@ -210,6 +210,9 @@ class TextEditor:
         ed = self.adata.get('endDate', {})
         enddate = f"{month_name[ed['month']]} {ed['day']}, {ed['year']}" if ed.get('day') and ed.get('year') else ""
         titles = self.adata.get("title", {})
+        status = self.adata.get("status") or "N/A"
+        if status != "N/A":
+            status = status.capitalize()
 
         return CAPTION_FORMAT.format(
                 title=titles.get('english') or titles.get('romaji') or title.get('native'),
